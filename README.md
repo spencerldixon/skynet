@@ -30,6 +30,40 @@ Skynet is broken up into two parts so far...
 
 Much more on the way soon!
 
+### Skynet::Stats
+
+A statistical analysis toolkit, initialise a new object an pass in an array that you'd like to analyse
+
+```
+a = [1,2,3,6,4,2,5,7,5,4,100,200]
+skynet = Skynet::Stats.new(a)
+
+skynet.mean
+skynet.mode
+skynet.median
+skynet.variance
+skynet.difference
+skynet.standard_deviation
+skynet.outliers
+```
+
+`mean`, `mode`, and `median` are self explanatory. `standard_deviation` is how far the numbers are spread out in relation to the mean. We can say that any datapoints more than one standard deviation from the mean, can be considered unusual, or an outlier. The `outliers` method will return a new array of these unusual datapoints that are less than or more than one standard deviation from the mean. `difference` will return an array of each elements difference from the mean.
+
+### Skynet::Bayes
+
+A Naive Bayesian Classifier, think your traditional spam/ham filter. Initialise a new object with your categories and start training your classifier
+
+```
+skynet = Skynet::Bayes.new("Spam", "Ham")
+skynet.train("Spam" = "FREE FREE FREE BUY ME!")
+skynet.train("Ham" = "I'll be back")
+
+skynet.classify("Sarah Connor")
+  => "Ham"
+```
+
+Still under development!
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
