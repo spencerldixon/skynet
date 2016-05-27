@@ -28,6 +28,8 @@ Skynet is broken up into two parts so far...
 `Skynet::Stats` : A statistical analysis tool offering things like `mean`, `mode`, `median`, `standard_deviation` and `variance`.
 `Skynet::Bayes` : A Bayesian filter as used in the classic spam/ham detection
 
+Much more on the way soon!
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
