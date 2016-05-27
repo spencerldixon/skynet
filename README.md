@@ -55,8 +55,8 @@ A Naive Bayesian Classifier, think your traditional spam/ham filter. Initialise 
 
 ```
 skynet = Skynet::Bayes.new("Spam", "Ham")
-skynet.train("Spam" = "FREE FREE FREE BUY ME!")
-skynet.train("Ham" = "I'll be back")
+skynet.train("Spam", "FREE FREE FREE BUY ME!")
+skynet.train("Ham", "I'll be back")
 
 skynet.classify("Sarah Connor")
   => "Ham"
