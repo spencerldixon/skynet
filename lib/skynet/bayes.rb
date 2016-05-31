@@ -1,3 +1,5 @@
+require 'csv'
+
 class Skynet::Bayes
   def initialize(*categories)
     @words = Hash.new
@@ -67,7 +69,7 @@ class Skynet::Bayes
   end
 
   def word_probability(category, word)
-    (@words[category][word].to_f + 1)/@categories_words[category].to_f
+    (@words[category][word].to_f + 2)/@categories_words[category].to_f
   end
 
   def category_probability(category)
@@ -75,4 +77,23 @@ class Skynet::Bayes
   end
 
 
+  def train_from_csv(path)
+    # First column should be the label, second should be the content
+    CSV.foreach(path) do |row|
+      train(row[0], row[1])
+    end
+  end
+
+  def test_accuracy(train_path, test_path)
+    total = 0
+    correct_classifications = 0
+    self.train_from_csv(train_path)
+    CSV.foreach(test_path) do |row|
+      classification = self.classify(row[1])
+      correct_classifications+= 1 if classification == row[0]
+      total+=1
+    end
+    # Return accuracy
+    correct_classifications / total
+  end
 end

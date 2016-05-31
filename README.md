@@ -61,8 +61,18 @@ skynet.train("Ham", "I'll be back")
 skynet.classify("Sarah Connor")
   => "Ham"
 ```
+For ease of use, you can import a csv into the classifier instead of training manually...
+```
+skynet.train_from_csv("train_path", "test_path")
+```
+You can also test the accuracy of a trained classifier by passing in two csv's; One to train and one to test.
 
-Still under development!
+```
+skynet = Skynet::Bayes.new("spam", "ham")
+skynet.test_accuracy("/Users/train.csv", "/Users/test.csv")
+```
+
+It's a good idea to weight them with equal spam and ham to make it a fair trial. Both files will need labels. The classifier will train itself on the first dataset, and test its assumptions against the labels in the second test dataset, reporting back a number from 0 to 1, representing the accuracy of the classifiers trained guesses. Make the two datasets different, but equally weighted or you'll just get back an accuracy of 1 every time.
 
 ## Development
 
